@@ -35,8 +35,11 @@ for f in file:
         if len(stack_id) > STACK_ID_MAX_LENGTH:
             errors.append("'stack' cannot be greater than {} characters long".format(STACK_ID_MAX_LENGTH))
 
-        if 'nodeInstanceYype' not in obj:
+        if 'nodeInstanceType' not in obj:
             errors.append("Nodes instance type is not defined")
+
+        if 'nodeDesiredCapacity' not in obj:
+            errors.append("Node count is not defined")
         
 fp.close()
 
