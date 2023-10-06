@@ -191,7 +191,7 @@ resource "aws_eip_association" "nodeEIPAssociation" {
   allow_reassociation = true
 }
 
-# Creating volume for Indexers
+# Creating volume for Nodes
 resource "aws_ebs_volume" "nodeVolume" {
   count             = var.nodeDesiredCapacity
   availability_zone = data.aws_availability_zones.availableZones.names[count.index]
@@ -201,13 +201,4 @@ resource "aws_ebs_volume" "nodeVolume" {
     Snapshot = "true"
     Name     = "Node Volume"
   }
-}
-
-# Attaching volume to Indexers
-resource "aws_volume_attachment" "ebsNode" {
-  count        = var.nodeDesiredCapacity
-  device_name  = "/dev/sdf"
-  volume_id    = aws_ebs_volume.nodeVolume.*.id[count.index]
-  instance_id  = data.aws_instances.nodeInstance.ids[count.index]
-  force_detach = true
 }
