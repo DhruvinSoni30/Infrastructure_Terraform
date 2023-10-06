@@ -7,10 +7,10 @@ sshAccess = ["0.0.0.0/0"]
 # UI Access
 uiAccess = ["0.0.0.0/0"]
 
-# Node Type
+# Instane Type
 nodeInstanceType = "t2.micro"
 
-# Node Count
+# Instance Count
 nodeDesiredCapacity = "3"
 
 # Volume Size
