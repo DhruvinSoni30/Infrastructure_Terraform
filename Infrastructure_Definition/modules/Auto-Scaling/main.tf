@@ -27,7 +27,7 @@ resource "aws_launch_template" "nodeCustomLaunchTemplate" {
   key_name                = var.keyName
   update_default_version  = true
   disable_api_termination = true
-  user_data = filebase64("/Users/dhruvins/Desktop/Terraform_AWS_Monitoring/Infrastructure_Definition/bin/node.sh")
+  user_data = filebase64("/Users/dhruvins/Desktop/Infrastructure_Terraform/Infrastructure_Definition/bin/node.sh")
 
   monitoring {
     enabled = true
