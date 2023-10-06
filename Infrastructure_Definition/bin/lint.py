@@ -5,7 +5,7 @@ import hcl
 
 STACK_ID_MAX_LENGTH = 22
 
-# regex to validate the stack id doesn't have any whitespace, capital letters or underscores
+# regex to validate the stack ID doesn't have any whitespace, capital letters, or underscores
 stack_id_validator = re.compile('[A-Z\s\_]')
 
 # regex to validate the region
@@ -25,27 +25,19 @@ for f in file:
         if region_validator.search(region) is None:
             errors.append("Invalid Region")
 
-        if 'project_name' not in obj:
+        if 'projectName' not in obj:
             errors.append("Stack name is not defined")
 
-        stack_id = obj['project_name']
+        stack_id = obj['projectName']
         if stack_id_validator.search(stack_id) is not None:
             errors.append("Invalid value for 'stack' - No uppercase characters, whitespace or underscores allowed")
 
         if len(stack_id) > STACK_ID_MAX_LENGTH:
             errors.append("'stack' cannot be greater than {} characters long".format(STACK_ID_MAX_LENGTH))
 
-        if 'idx_instance_type' not in obj:
-            errors.append("Indexer instance type is not defned")
+        if 'nodeInstanceYype' not in obj:
+            errors.append("Nodes instance type is not defined")
         
-        if 'sh_instance_type' not in obj:
-            errors.append("Search Head instance type is not defned")
-
-        if 'hf_instance_type' not in obj:
-            errors.append("Forwarder instance type is not defned")
-
-        if 'dp_instance_type' not in obj:
-            errors.append("Deployer instance type is not defned")
 fp.close()
 
 if len(errors) > 0:
