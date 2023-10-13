@@ -15,7 +15,6 @@ if [ $code != 0 ]; then
     # configure aws provider
     provider "aws" {
       region  = var.region
-      profile = "dhsoni"
     }
 
     # configuring backend
@@ -24,7 +23,6 @@ if [ $code != 0 ]; then
         bucket         = "dhsoni-terraform"
         key            = "$STACKNAME/terraform.tfstate"
         region         = "us-east-2"
-        profile        = "dhsoni"
         dynamodb_table = "terraform-state-lock-dynamodb"
       }
     }
