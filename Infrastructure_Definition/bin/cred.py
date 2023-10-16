@@ -1,7 +1,7 @@
 import hcl
 
 # Define the path to the terraform.tfvars file
-tfvars_file = "/Users/dhruvins/Desktop/Infrastructure_Terraform/Stack_Definition/buttercupgames/terraform.tfvars"
+tfvars_file = "${WORKSPACE}/Stack_Definition/${env.stack_name}/terraform.tfvars"
 
 def get_account_name_from_tfvars(tfvars_file):
     try:
