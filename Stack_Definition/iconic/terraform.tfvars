@@ -1,8 +1,11 @@
-# Stack name
+# Stack Name
 projectName = "iconic"
 
-# VPC name
+# VPC Name
 vpcName = "iconic"
+
+# Account Name
+account_name = "dhsoni"
 
 # SSH Access
 sshAccess = ["0.0.0.0/0"]

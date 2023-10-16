@@ -15,6 +15,7 @@ if [ $code != 0 ]; then
     # configure aws provider
     provider "aws" {
       region  = var.region
+      profile = var.account_name
     }
 
     # configuring backend
