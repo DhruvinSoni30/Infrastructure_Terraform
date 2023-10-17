@@ -1,6 +1,7 @@
 import hcl
 import subprocess
 
+dir_path="/Users/dhruvins/.jenkins/jobs/Build_Stack_Terraform/workspace/Stack_Definition/"
 
 # Run the 'git rev-parse HEAD' command to get the last commit SHA
 try:
@@ -13,7 +14,7 @@ except subprocess.CalledProcessError as e:
 file = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
 
 updated_file = subprocess.check_output(file, shell=True, stderr=subprocess.STDOUT, text=True)
-tfvars_file = updated_file+"terraform.tfvars"
+tfvars_file = dir_path+updated_file+"terraform.tfvars"
 
 print(tfvars_file)
 
