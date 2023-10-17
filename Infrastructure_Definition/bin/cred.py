@@ -14,6 +14,8 @@ except subprocess.CalledProcessError as e:
 file = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
 
 updated_file = subprocess.check_output(file, shell=True, stderr=subprocess.STDOUT, text=True)
+updated_file = str(updated_file)
+
 tfvars_file = dir_path+updated_file+"/terraform.tfvars"
 
 print(tfvars_file)
