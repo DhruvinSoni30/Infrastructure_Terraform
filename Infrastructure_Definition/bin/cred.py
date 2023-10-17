@@ -11,8 +11,9 @@ except subprocess.CalledProcessError as e:
 
 # Define the path to the terraform.tfvars file
 file = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
+updated_file = file+"terraform.tfvars"
 
-tfvars_file = subprocess.check_output(file, shell=True, stderr=subprocess.STDOUT, text=True)
+tfvars_file = subprocess.check_output(updated_file, shell=True, stderr=subprocess.STDOUT, text=True)
 print(tfvars_file)
 
 def get_account_name_from_tfvars(tfvars_file):
