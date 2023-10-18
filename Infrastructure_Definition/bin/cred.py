@@ -1,27 +1,26 @@
 import hcl
 import subprocess
 
-dir_path="/Users/dhruvins/.jenkins/jobs/Build_Stack_Terraform/workspace/Stack_Definition/"
-
 # Run the 'git rev-parse HEAD' command to get the last commit SHA
 try:
     commit_sha = subprocess.check_output(["git", "rev-parse", "HEAD"]).strip().decode("utf-8")
-    print("Last commit SHA:", commit_sha)
 except subprocess.CalledProcessError as e:
     print("Error:", e)
 
 # Define the path to the terraform.tfvars file
-file = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
+dir = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
 
-updated_file = subprocess.check_output(file, shell=True, stderr=subprocess.STDOUT, text=True)
-updated_file = str(updated_file)
+updated_dir = subprocess.check_output(dir, shell=True, stderr=subprocess.STDOUT, text=True)
+updated_dir = str(updated_dir).strip()
 
-tfvars_file = dir_path+updated_file+"/terraform.tfvars"
+dir_path="/Users/dhruvins/.jenkins/jobs/Build_Stack_Terraform/workspace/Stack_Definition/"
+file_name="/terraform.tfvars"
 
-print(tfvars_file)
+tfvars_file = dir_path+updated_dir+file_name
 
 def get_account_name_from_tfvars(tfvars_file):
 
+    print("file", tfvars_file)
     try:
         with open(tfvars_file, 'r') as f:
         # Load the contents of the terraform.tfvars file into a dictionary
