@@ -5,7 +5,7 @@ projectName = "iconic"
 vpcName = "iconic"
 
 # Account Name
-account_name = "dhsoni"
+account_name = "prod"
 
 # SSH Access
 sshAccess = ["0.0.0.0/0"]
