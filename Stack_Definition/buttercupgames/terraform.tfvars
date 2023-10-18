@@ -1,4 +1,4 @@
-# Stack name
+# Stack's name
 projectName = "buttercupgames"
 
 # SSH Access
