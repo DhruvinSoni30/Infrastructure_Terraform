@@ -20,7 +20,6 @@ tfvars_file = dir_path+updated_dir+file_name
 
 def get_account_name_from_tfvars(tfvars_file):
 
-    print("file", tfvars_file)
     try:
         with open(tfvars_file, 'r') as f:
         # Load the contents of the terraform.tfvars file into a dictionary
