@@ -1,22 +1,20 @@
 import hcl
 import subprocess
+import argparse
 
-# Run the 'git rev-parse HEAD' command to get the last commit SHA
-try:
-    commit_sha = subprocess.check_output(["git", "rev-parse", "HEAD"]).strip().decode("utf-8")
-except subprocess.CalledProcessError as e:
-    print("Error:", e)
+parser = argparse.ArgumentParser(description="Stack Name")
 
-# Define the path to the terraform.tfvars file
-dir = f"git diff-tree --no-commit-id --name-only -r {commit_sha} | head -1 | cut -d'/' -f2"
+parser.add_argument("-s", "--user_input", type=str, help="Stack Name")
 
-updated_dir = subprocess.check_output(dir, shell=True, stderr=subprocess.STDOUT, text=True)
-updated_dir = str(updated_dir).strip()
+args = parser.parse_args()
+
+stack_name = args.user_input
+stack_name = str(stack_name)
 
 dir_path="/Users/dhruvins/.jenkins/jobs/Build_Stack_Terraform/workspace/Stack_Definition/"
 file_name="/terraform.tfvars"
 
-tfvars_file = dir_path+updated_dir+file_name
+tfvars_file = dir_path+stack_name+file_name
 
 def get_account_name_from_tfvars(tfvars_file):
 
