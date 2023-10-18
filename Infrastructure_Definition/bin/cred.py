@@ -30,7 +30,7 @@ def get_account_name_from_tfvars(tfvars_file):
             if 'account_name' in tfvars_data:
                 return tfvars_data['account_name']
             else:
-                return None
+                return "dhsoni"
 
     except FileNotFoundError:
         return f"File {tfvars_file} not found."
